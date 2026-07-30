@@ -19,3 +19,10 @@ jobs:
 
       - name: Compile Mod Jar File
         run: gradle build
+
+      - name: Publish Artifact to Screen
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-mod
+          path: build/libs/*.jar
+
