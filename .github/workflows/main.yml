@@ -14,13 +14,15 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Install Gradle
+      - name: Install Compatible Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10'
+          gradle-version: '8.8'
 
       - name: Compile Mod Jar
         run: gradle build
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2g"
 
       - name: Save Mod File
         uses: actions/upload-artifact@v4
