@@ -14,18 +14,10 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Install Compatible Gradle
+      - name: Install Exact Gradle 9.5 Tooling
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.8'
+          gradle-version: '9.5'
 
       - name: Compile Mod Jar
-        run: gradle build
-        env:
-          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx2g"
-
-      - name: Save Mod File
-        uses: actions/upload-artifact@v4
-        with:
-          name: compiled-mod
-          path: build/libs/*.jar
+        run: gradle build --no-daemon
