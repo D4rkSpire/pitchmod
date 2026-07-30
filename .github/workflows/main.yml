@@ -14,10 +14,8 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Install Exact Gradle 9.5 Tooling
+      - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.5'
 
-      - name: Compile Mod Jar
-        run: gradle build --no-daemon
+      - name: Compile Mod Jar File
+        run: gradle build
